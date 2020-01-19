@@ -24,9 +24,9 @@ function from_meat(lamb, beef, pork, turkey, chicken, fish, other_meat, other_fi
     
     var totalCO2 = 0;
     
-    for (let i = 0; i < 6; i++) {
+    for (let i=0; i<7; i++) {
         
-        totalCO2 = totalCO2 + means[i]*CO2perGram[i]*avgMeatServing;
+        totalCO2 = totalCO2 + meats[i]*CO2perGram[i]*avgMeatServing;
         
     }
     
