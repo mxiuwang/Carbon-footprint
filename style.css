@@ -16,16 +16,14 @@ body{
 	color:white;
 }
 
-.columns{
-	width:30%;
+.column {
+	float: left;
 }
-
-.calculator{
-	float:left;
+  
+.left, .right {
+	width: 25%;
 }
-.ImageRecognition{
-	float:center;
-}
-.ImageRecognition2{
-	float:right;
+  
+.middle {
+	width: 50%;
 }

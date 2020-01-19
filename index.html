@@ -23,23 +23,31 @@ Bonus points
 	<meta http-equiv="X-UA-Compatible" content = "ie=edge"/> <!-- what version of internet explorer it is compatible with -->
 	<link rel="stylesheet" type="text/css" href="style.css"> <!-- import css style sheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<title>Triple R</title>
 
 </head>
+
+<div id="title" class="jumbotron text-center" style="margin-bottom:0">
+	<h1>Triple R</h1>
+	<p>Welcome to Triple R! Choose between a Carbon Footprint Calculator, or a smart, recyling-sorting program!</p> 
+</div>
+
 <body>
 
-	<div class=columns>
-		<div class="calculator">
+	<div class="row">
+		<div id="calculator" class="col">
 			<h1 class="carbon-footprint-calculator">Calculator</h1>
 			<button style =width:33% onclick="window.location.href = 'calculator.html';">Calc button</button>
 		</div>
 
-		<div class="ImageRecognition">
+		<div id="ImageRecognition" class="col">
 			<h1 class="Upload-image">Upload Image</h2>
 			<button onclick="window.location.href = 'learn.html';">Learn button</button>
 		</div>
 
-		<div class="ImageRecognition2">
+		<div id="ImageRecognition2" class="cols">
 			<h1 class="Upload-image2">Upload Image2</h2>
 			<button onclick="window.location.href = 'recycle.html';">Recycle button</button>
 		</div>
