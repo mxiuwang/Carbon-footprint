@@ -1,4 +1,3 @@
-
 var daily_kms = $("#kms").val();
 var lamb = $("#lamb").val();
 var beef = $("#beef").val();
@@ -19,7 +18,6 @@ var vegetables = $("#vegetables").val();
 var lentils = $("#lentils").val();
 var kWh = $("#power").val();
 
-    
 function from_gasoline(daily_km) {
     
     var co2PerMile = 404;
@@ -150,17 +148,28 @@ function calculator() {
     }
 }
 
+function calculator() {
+    
+    //call each of the above functions using the use inputted values
+    //display the stuff inside the functions, and the total co2
+    
+    //return a list containing two lists: 1) sorted by amount of co2 emissions 2)a dictionary with the source of emission and amount
+    return  ["meats", "eating meat", "meat bi-products", "power", ""]
+}
+
 function display() {
     // displays iframe with google search result of the highest CO2 emission from the calculator
     let highestCO2 = calculator()[0];
     let url = `http://www.google.com/search?q=ways+to+reduce+emissions+${highestCO2}&igu=1`;
-    $("#iframeweb").attr("src", url);  
+    $("#iframeweb").attr("src", url);
+    
 }
 
+$(document).ready(function(){
+    $("#send").click(function(){
+        var car = $("#carData").val();
+        var distance = $("#distanceData").val();
+    });
+});
 
 display();
-
-
-
-
-
