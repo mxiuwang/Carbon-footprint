@@ -1,7 +1,7 @@
 #Source for AWS:PyLenin, https://www.youtube.com/watch?v=_cQEuLGv45o
 #source for nltk: Dhilip Subramanian, https://towardsdatascience.com/synonyms-and-antonyms-in-python-a865a5e14ce8
 import csv       #import csv module
-import boto3      # import AWS module to use rekognition funcionallity SOURCE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import boto3      # import AWS module to use rekognition funcionallity
 import nltk
 import inflect # from: https://stackoverflow.com/questions/18902608/generating-the-plural-form-of-a-noun
 
@@ -15,6 +15,10 @@ with open('credentials.csv', 'r') as input:   #iterate over the csv containing o
 		accKeyID = i[2] # the 3rd item in the file is the access Key ID
 		secAccKey = i[3] #the 4th item in the file is the secret access key
 
+#Below is the demo list: ask judges for random images to download to show
+#demolist=[]
+
+# below is the images that we tested
 UserInput = ['box.JPG','popcan.png','aluminium.JPG','battery.JPG','cardboard.JPG','chair.JPG','fruit.JPG','laptop.JPG','meat.JPG','milkjug.JPG','orangepeel.JPG','paper.JPG','pen.JPG','soupcan.JPG','tire.JPG'] #Load the image to be tested
 
 itemList = []
@@ -27,7 +31,7 @@ for pic in UserInput:
 		
 	estimate = client.detect_labels(Image={'Bytes': originalBytes},MaxLabels = 10)	#get the image
 	itemList.append(estimate['Labels'][0]['Name'].upper())
-print(itemList)
+#print(itemList)
 
 def wordSplitList(word):
 	word = str(word)
