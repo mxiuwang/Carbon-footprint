@@ -1,3 +1,5 @@
+
+
 function from_gasoline(fuel_type, daily_km) {
     
     var co2PerMile = 404;
@@ -6,20 +8,17 @@ function from_gasoline(fuel_type, daily_km) {
     
     var totalCo2;
     
-    if (fuel_type == 'Gasoline') {
+    totalCO2 = daily_miles * co2PerMile;
     
-        totalCO2 = daily_miles * 404;
-    
-    }
-    
+    //multiply by 7 for 7 days a week
     return totalCo2*7;
 }
 
-function from_meat(lamb, beef, pork, turkey, chicken, fish) {
+function from_meat(lamb, beef, pork, turkey, chicken, fish, other_meat, other_fish) {
     
     var meats = [lamb, beef, pork, turkey, chicken, fish, other_meat];
     
-    var CO2perGram = [27,39.2,12.1,10.9,6.9,6.1];
+    var CO2perGram = [27,39.2,12.1,10.9,6.9,6.1,20];
     
     var avgMeatServing = 28.35;
     
@@ -99,19 +98,10 @@ function calculator() {
     return  ["transportation", "eating meat", "meat bi-products", "power", ""]
 }
 
-function display() {
-    // displays iframe with google search result of the highest CO2 emission from the calculator
-    let highestCO2 = calculator()[0];
-    let url = `http://www.google.com/search?q=ways+to+reduce+emissions+${highestCO2}&igu=1`;
-    $("#iframeweb").attr("src", url);
-    
-}
 
-$(document).ready(function(){
-    $("#send").click(function(){
-        var car = $("#carData").val();
-        var distance = $("#distanceData").val();
-    });
-});
 
-display();
+
+
+
+
+

@@ -1,39 +1,240 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="calculator_style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>         
+
+<div class="container">
+  <header class="header">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>         
         
-        <title>
-            Carbon Foorprint Calculator
-        </title>
-    </head>
+    <h1 id="title" class="text-center">Carbon Footprint Calculator</h1>
+    <p id="description" class="description text-center">
+      Thank you for taking the time to look out for our planet
+    </p>
+  </header>
+  <form id="survey-form">
+    <div class="form-group">
+      <label id="gas-label" for="km">How many kms do you drive daily?</label>
+      <input
+        type="text"
+        name="kms"
+        id="kms"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
     
-    <body>
-        <a href="index.html">home</a>
+    <div class="form-group">
+      <label id="lamb-label" for="lamb">How many times in an average week do you consume lamb?</label>
+      <input
+        type="lamb"
+        name="lamb"
+        id="lamb"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="beef-label" for="beef">How many times in an average week do you consume beef?</label>
+      <input
+        type="beef"
+        name="beef"
+        id="beef"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="pork-label" for="pork">How many times in an average week do you consume pork?</label>
+      <input
+        type="pork"
+        name="pork"
+        id="pork"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="turkey-label" for="turkey">How many times in an average week do you consume turkey?</label>
+      <input
+        type="turkey"
+        name="turkey"
+        id="turkey"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="chicken-label" for="chicken">How many times in an average week do you consume chicken?</label>
+      <input
+        type="chicken"
+        name="chicken"
+        id="chicken"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="fish-label" for="fish">How many times in an average week do you consume fish?</label>
+      <input
+        type="fish"
+        name="fish"
+        id="fish"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="other-label" for="other">How many times in an average week do you consume other forms of meat?</label>
+      <input
+        type="other"
+        name="other"
+        id="other"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="cheese-label" for="cheese">How many times in an average week do you consume cheese?</label>
+      <input
+        type="cheese"
+        name="cheese"
+        id="cheese"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="eggs-label" for="eggs">How many eggs do you consume in an average week?</label>
+      <input
+        type="eggs"
+        name="eggs"
+        id="eggs"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="milk-label" for="milk">How many glasses of milk do you consume in an average week?</label>
+      <input
+        type="milk"
+        name="milk"
+        id="milk"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="potatoes-label" for="potatoes">How many potatoes do you consume in an average week?</label>
+      <input
+        type="potatoes"
+        name="potatoes"
+        id="potatoes"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="rice-label" for="rice">How many times a week do you each rice?</label>
+      <input
+        type="rice"
+        name="rice"
+        id="rice"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="nuts-label" for="nuts">How many times a in an average week do you consume nuts?</label>
+      <input
+        type="nuts"
+        name="nuts"
+        id="nuts"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="beans-label" for="beans">How many times a week do you consume beans or tofu?</label>
+      <input
+        type="beans"
+        name="beans"
+        id="beans"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="fruit-label" for="fruit">How many times in an average week do you consume fruit?</label>
+      <input
+        type="fruit"
+        name="fruit"
+        id="fruit"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="vegetable-label" for="vegetables">How many times in an average week do you consume vegetables?</label>
+      <input
+        type="vegetables"
+        name="vegetables"
+        id="vegetables"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="lentils-label" for="lentils">How many times in an average week do you consume lentils?</label>
+      <input
+        type="lentils"
+        name="lentils"
+        id="lentils"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label id="power-label" for="power">How many kwH of power do you use a week (this can be obtained from your last power bill divided by 4)? </label>
+      <input
+        type="power"
+        name="power"
+        id="power"
+        class="form-control"
+        placeholder="Enter an integer"
+        required
+      />
+    </div>
 
-        <span id="questions">
-            <div>What kind of fuel does your vehicle use?</div>
-        </span>
-    
-        <select class="fuel" id="carData">
-          <option value="none">None</option>
-          <option value="gasoline">Gasoline</option>
-          <option value="diesel">Diesel</option>
-          <option value="electricity">Electricity</option>
-          <option value="hybrid">Hybrid</option>
-        </select>
-            
-        <span id=questions>
-            <div>Approximately how many km do you travel in a day?</div>
-        </span>
+    <div class="form-group">
+      <p>Any comments or suggestions?</p>
+      <textarea
+        id="comments"
+        class="input-textarea"
+        name="comment"
+        placeholder="Enter your comment here..."
+      ></textarea>
+    </div>
 
-        <p id="inputRow">
-            <input type="text" id="inputField">
-        </p>
-    
-        <p id="response"></p>
-
-        <button id="send" onclick="window.location.href = 'results.html';">Submit</button>
-
-    </body>
-</html>
+    <div class="form-group">
+      <button type="submit" id="submit" class="submit-button">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
