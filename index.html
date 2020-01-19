@@ -1,50 +1,105 @@
-<!-- Build a UI:
-- display carbon footprint calculator (JS import)
-- option for user to upload images, and automatically downloads them 
-- display results of web scrape 
+<div id="instructions">
+  Method 1:<br /> 1. Copy image data into clipboard, or press Print Screen <br /> 2. Press Ctrl+V (page/iframe must be focused): <br /><br /> Method 2:<br /> 1. Drag and drop an image onto the canvas
+</div>
+<br /><br />
+<canvas style="border:1px solid grey;" id="my_canvas" width="300" height="300"></canvas>
+<script>
+	var CLIPBOARD = new CLIPBOARD_CLASS("my_canvas", true);
 
-Sources:
+/**
+ * image pasting into canvas
+ * 
+ * @param {string} canvas_id - canvas id
+ * @param {boolean} autoresize - if canvas will be resized
+ */
+function CLIPBOARD_CLASS(canvas_id, autoresize) {
+  var _self = this;
+  var canvas = document.getElementById(canvas_id);
+  var ctx = document.getElementById(canvas_id).getContext("2d");
 
-Accessibility
-- proper text for titles,images 
-- Use colors with care 
-- dynamic sizing/content
+  //handlers
+  document.addEventListener('paste', function(e) {
+    _self.paste_auto(e);
+  }, false);
 
-Bonus points
-- puns 
+  /* events fired on the drop targets */
+  document.addEventListener("dragover", function(e) {
+    // prevent default to allow drop
+    e.preventDefault();
+  }, false);
+  document.addEventListener('drop', function(e) {
+    // prevent default action (open as link for some elements)
+    //debugger;
+    e.preventDefault();
+    var items = e.dataTransfer.items;
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        document.getElementById("instructions").style.visibility = "hidden";
+        //image
+        var blob = items[i].getAsFile();
+        var URLObj = window.URL || window.webkitURL;
+        var source = URLObj.createObjectURL(blob);
+        _self.paste_createImage(source);
+      }
+    }
+  });
 
--->
+  //on paste
+  this.paste_auto = function(e) {
+    if (e.clipboardData) {
+      var items = e.clipboardData.items;
+      if (!items) return;
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width = device-width, initial-scale=1.0"/> <!-- adjusts to the width and zoom of the device, so viewing on phone isn't as awful -->
-	<meta http-equiv="X-UA-Compatible" content = "ie=edge"/> <!-- what version of internet explorer it is compatible with -->
-	<link rel="stylesheet" type="text/css" href="style.css"> <!-- import css style sheet -->
-	<title>Triple R</title>
+      //access data directly
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+          //image
+          var blob = items[i].getAsFile();
+          var URLObj = window.URL || window.webkitURL;
+          var source = URLObj.createObjectURL(blob);
+          this.paste_createImage(source);
+        }
+      }
+      e.preventDefault();
+    }
+  };
+  //draw pasted image to canvas
+  this.paste_createImage = function(source) {
+    //debugger;
+    var pastedImage = new Image();
+    pastedImage.onload =  async function() {
+      if (autoresize == true) {
+        //resize
+        canvas.width = pastedImage.width;
+        canvas.height = pastedImage.height;
+      } else {
+        //clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.drawImage(pastedImage, 0, 0);
 
-</head>
-<body>
+      const req = await fetch('http://127.0.0.1:5000/api/end', {
+    		headers: {
+		      'Accept': 'application/json',
+		      'Content-Type': 'application/json'
+		    },
+		    method: 'post',
+		    body: JSON.stringify({image: canvas.toDataURL()})
+		  });
+		console.log(await req.json());
+    };
+    pastedImage.src = source;
+  };
+}
 
-	<div class="calculator">
-		<h1 class="carbon-footprint-calculator">Triple R</h1>
-		<button style =width:33% onclick="window.location.href = 'calculator.html';">Calc button</button>
-	</div>
+// detect blank canvas: https://stackoverflow.com/a/17386803/177416
+function isCanvasBlank(canvas) {
+  var blank = document.createElement('canvas');
+  blank.width = canvas.width;
+  blank.height = canvas.height;
 
-	<div class="ImageRecognition">
-		<h1 class="Upload-image">Upload Image</h2>
-		<button onclick="window.location.href = 'learn.html';">Learn button</button>
-	</div>
+  return canvas.toDataURL() === blank.toDataURL();
 
-	<div class="ImageRecognition2">
-		<h1 class="Upload-image2">Upload Image2</h2>
-		<button onclick="window.location.href = 'recycle.html';">Recycle button</button>
-	</div>
+}
 
-	<script src="./dist/app.bundle.js" type="text/javascript"></script>
-	<script src="index.js"></script>
-
-
-</body>
-</html>
+</script>

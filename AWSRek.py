@@ -22,38 +22,68 @@ for pic in UserInput:
 #convert image into base-64 bytes
 	with open(pic, 'rb') as original:
 		originalBytes = original.read()  # the bytes are what will be passed into the rekognition detect labels method
+		#originalBytes = 
 
-	estimate = client.detect_labels(Image={'Bytes': originalBytes},MaxLabels = 1)	#get the image
+	estimate = client.detect_labels(Image={'Bytes': originalBytes},MaxLabels = 10)	#get the image
 
 	itemList.append(estimate['Labels'][0]['Name'])
 print(itemList)
 
 def itemCheck(item):
-	oragnicList=['Fruit','Peel','Plant']
-	recycleRefundList = ['Milk','Soda']
-	recycleNonRefund = ['Tin','Paper','Steel','Cardboard']
-	electronics = ['PC','Fuse']
-	garbage = ['Pen','Chair']
+	oragnicList=['Fruit','Peel','Plant','Food','Vegtable','Apple','Burger','Flower','Leaf', 'Meat','Meal','Lunch','Breakfast','Supper','Dinner']
+	for org in oragnicList:
+		synOrg = wn.synsets(org)
+	for i in synOrg:
+		str(i)
+		oragnicList.append(wordSplit(i))
+	print(oragnicList)
+	recyclingList =['Milk','Soda','Can','Tin','Paper','Steel','Cardboard','Box','Soup','Spoupcan','Plastic','Wrap']
+
+	garbageOrElectronics = ['Pen','Chair','Pc','Fuse','TV','Microwave','Garbage']
+	#recycleRefundList = ['Milk','Soda','Can']
+	#recycleNonRefund = ['Tin','Paper','Steel','Cardboard']
+	#electronics = ['PC','Fuse','TV','Microwave']
+	
 
 	if item in oragnicList:
 		#print('This is a '+ item + ', pleaase place it in your organics bin or compost.')
 		return 0
-	if item in recycleRefundList:
+	if item in recyclingList:
 		#print('This is a '+ item + ', please return for a refund.')
 		return 0
-	if item in recycleNonRefund:
+	#if item in recycleNonRefund:
 		#print('This is a '+ item + ', please place in your recycling bin.')
-		return 0
-	if item in electronics:
+		#return 0
+	#if item in electronics:
 		#print('This is a '+ item + ', please return your unwanted electronics to the nearest pickup location.')
-		return 0
-	if item in garbage:
-		#print('This is a '+ item + ', please place all garbage in your gaerbage bin, or take to your local landfill.')
+		#return 0
+	if item in garbageOrElectronics:
+		#print('This is a '+ item + ', please place all garbage in your gaerbage bin, or take to your local landfill.Please return your unwanted electronics to the nearest pickup location.')
 		return 0
 	else:
 		#print('Unkown item, please consult with your local jusrtistictions webpage.')
 		return 0
+
+def wordSplit(word):
+	word = str(word)
+	word2=''
+	for i in range(8,len(word)):
+		if word[i] != '.':
+			word2+=word[i]
+		if word[i]=='.':
+			return word2
+
+
+
+#itemCheck(item)
+synonymList = []
 for item in itemList:
 	synonym = wn.synsets(item)
-	itemCheck(item)
-	print(synonym)
+	#itemCheck(item)
+
+	for i in synonym:
+		str(i)
+		synonymList.append(wordSplit(i))
+	#print(synonym)
+print(synonymList)
+print(len(synonymList))
