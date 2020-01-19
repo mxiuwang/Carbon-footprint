@@ -102,8 +102,8 @@ function calculator() {
 function display() {
     // displays iframe with google search result of the highest CO2 emission from the calculator
     let highestCO2 = calculator()[0];
-    let url = `http://www.google.com/search?q=${highestCO2}`;
-    window.open(url);
+    let url = `http://www.google.com/search?q=ways+to+reduce+emissions+${highestCO2}&igu=1`;
+    $("#iframeweb").attr("src", url);
     
 }
 

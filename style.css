@@ -15,3 +15,17 @@ body{
     font-family:sans-serif;
 	color:white;
 }
+
+.columns{
+	width:30%;
+}
+
+.calculator{
+	float:left;
+}
+.ImageRecognition{
+	float:center;
+}
+.ImageRecognition2{
+	float:right;
+}
