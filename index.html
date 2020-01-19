@@ -1,41 +1,38 @@
-<!-- Build a UI:
-- display carbon footprint calculator (JS import)
-- option for user to upload images, and automatically downloads them 
-- display results of web scrape 
-
-Sources:
-
-Accessibility
-- proper text for titles,images 
-- Use colors with care 
-- dynamic sizing/content
-
-Bonus points
-- puns 
-
--->
-
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name = "viewport" content = "width = device-width, initial-scale=1.0"/> <!-- adjusts to the width and zoom of the device, so viewing on phone isn't as awful -->
-	<meta http-equiv="X-UA-Compatible" content = "ie=edge"/> <!-- what version of internet explorer it is compatible with -->
-	<link rel="stylesheet" type="text/css" href="style.css"> <!-- import css style sheet -->
-	<title>Triple R</title>
-
-</head>
-<body>
-
-	<div class="calculator">
-        <h1 class="carbon-footprint-calculator">Triple R</h1>
-        insert icons here
-	</div>
-
-	<div class="ImageRecognition">
-            <p></p>
-			<h4 class="Upload-image">Upload Image</h2>
-	</div>
-
-</body>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>         
+        
+        <title>
+            Carbon Foorprint Calculator
+        </title>
+    </head>
+    
+    <body>
+        <span id="questions">
+            <div>What kind of fuel does your vehicle use?</div>
+        </span>
+    
+        <select class="fuel" id="carData">
+          <option value="none">None</option>
+          <option value="gasoline">Gasoline</option>
+          <option value="diesel">Diesel</option>
+          <option value="electricity">Electricity</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+        <button id="sendCar">send</button>
+            
+        <span id=questions>
+            <div>Approximately how many km do you travel in a day?</div>
+        </span>
+        
+        <p id="inputRow">
+            <input type="text" id="inputField">
+        </p>
+        <button id="sendDistance">send</button>
+    
+        <p id="response"></p>
+        <script src="script.js" type="text/javascript"></script> 
+    </body>
 </html>
+
