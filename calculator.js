@@ -106,4 +106,11 @@ function display() {
     
 }
 
+$(document).ready(function(){
+    $("#send").click(function(){
+        var car = $("#carData").val();
+        var distance = $("#distanceData").val();
+    });
+});
+
 display();
