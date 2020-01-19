@@ -1,5 +1,3 @@
-
-
 function from_gasoline(fuel_type, daily_km) {
     
     var co2PerMile = 404;
@@ -101,10 +99,11 @@ function calculator() {
     return  ["transportation", "eating meat", "meat bi-products", "power", ""]
 }
 
+function display() {
+    // displays iframe with google search result of the highest CO2 emission from the calculator
+    let highestCO2 = calculator()[0];
+    console.log(highestCO2);
+    
+}
 
-
-
-
-
-
-
+display();
